@@ -4,4 +4,4 @@
 0. [EC2 with basic Docker execution](/ec2-basic-docker/)
 0. [ECS with Nginx](/ecs-nginx/)
 0. [ECS with Nginx and load balancer](/ecs-nginx-lb/)
-0. [ECS with Nginx, load balancer and auto scaling](/ecs-auto-scaling//)
+0. [ECS with Nginx, load balancer and auto scaling](/ecs-auto-scaling/)
