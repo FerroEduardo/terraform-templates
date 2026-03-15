@@ -2,6 +2,18 @@
 
 This project provisions basic AWS network resources such as VPC, subnet, and security group, and then creates an EC2 instance. After that, you can run an Ansible playbook to install Nginx with default settings.
 
+## Architecture Overview
+
+```mermaid
+flowchart LR
+    user[User] -->|HTTP| ec2
+    subgraph "AWS"
+        vpc[VPC] --> subnet[Subnet]
+        subnet --> ec2[EC2 Instance<br/>t4g.nano]
+    end
+    ansible[Ansible] -->|SSH| ec2
+    ec2 --> nginx[Nginx]
+```
 
 > [!TIP]
 > The infrastructure details can be found in the `.tf` files.

@@ -2,6 +2,17 @@
 
 This project provisions an ECS Fargate cluster running an Nginx container with basic networking (VPC, subnet, security group).
 
+## Architecture Overview
+
+```mermaid
+flowchart TB
+    subgraph "AWS"
+        vpc[VPC] --> subnet[Subnet]
+        subnet --> ecs[ECS Cluster<br/>Fargate]
+        ecs --> task[Nginx Task]
+    end
+```
+
 > [!TIP]
 > The infrastructure details can be found in the `.tf` files.
 

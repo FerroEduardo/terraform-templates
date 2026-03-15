@@ -2,6 +2,18 @@
 
 This project provisions basic AWS network resources such as VPC, subnet, and security group, and then creates an EC2 instance.
 
+## Architecture Overview
+
+```mermaid
+flowchart LR
+    user[User] -->|HTTP| ec2
+    subgraph "AWS"
+        vpc[VPC] --> subnet[Subnet]
+        subnet --> ec2[EC2 Instance<br/>t4g.nano]
+        ec2 --> docker[Docker]
+        docker --> nginx[Nginx Container]
+    end
+```
 
 > [!TIP]
 > The infrastructure details can be found in the `.tf` files.

@@ -2,6 +2,20 @@
 
 This project provisions an ECS Fargate cluster running an Nginx container behind an Application Load Balancer with CPU-based auto scaling.
 
+## Architecture Overview
+
+```mermaid
+flowchart TB
+    user[User] -->|HTTP| alb
+    subgraph "AWS"
+        alb[Application Load Balancer] -->|routes to| ecs[ECS Cluster<br/>Fargate]
+        ecs --> task1[Nginx Task]
+        ecs --> task2[Nginx Task]
+        ecs --> task3[Nginx Task]
+        asg[Auto Scaling<br/>CPU-based] -.manages.-> ecs
+    end
+```
+
 > [!TIP]
 > The infrastructure details can be found in the `.tf` files.
 

@@ -2,6 +2,17 @@
 
 This project provisions an ECS Fargate cluster running an Nginx container behind an Application Load Balancer with basic networking (VPC, subnets, security group).
 
+## Architecture Overview
+
+```mermaid
+flowchart TB
+    user[User] -->|HTTP| alb
+    subgraph "AWS"
+        alb[Application Load Balancer] -->|routes to| ecs[ECS Cluster<br/>Fargate]
+        ecs --> task[Nginx Task]
+    end
+```
+
 > [!TIP]
 > The infrastructure details can be found in the `.tf` files.
 

@@ -1,5 +1,9 @@
 # Terraform Templates
 
+Collection of Terraform projects for learning AWS infrastructure patterns, from basic EC2 to containerized ECS deployments.
+
+## Projects
+
 1. [Setup EC2 with Ansible](/ec2-setup-with-ansible/)
 0. [EC2 with basic Docker execution](/ec2-basic-docker/)
 0. [ECS with Nginx](/ecs-nginx/)
