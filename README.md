@@ -5,3 +5,4 @@
 0. [ECS with Nginx](/ecs-nginx/)
 0. [ECS with Nginx and load balancer](/ecs-nginx-lb/)
 0. [ECS with Nginx, load balancer and auto scaling](/ecs-auto-scaling/)
+0. [ECS with ECR](/ecs-ecr/)
