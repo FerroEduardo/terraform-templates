@@ -1,0 +1,144 @@
+{
+    "widgets": [
+        {
+            "type": "log",
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "Request Count (Counter)",
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /request_count/\n| stats sum(request_count) by bin(1m)",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "logClass": "STANDARD",
+                    "logGroupPrefix": [],
+                    "accountIds": []
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "view": "timeSeries"
+            }
+        },
+        {
+            "type": "log",
+            "x": 12,
+            "y": 6,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "Active Connections (UpDownCounter)",
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /active_connections/\n| stats avg(active_connections) by bin(1m)",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "logClass": "STANDARD",
+                    "logGroupPrefix": [],
+                    "accountIds": []
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "view": "timeSeries"
+            }
+        },
+        {
+            "type": "log",
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /request_duration_ms/\n| stats\n\n  sum(`request_duration_ms.Count`) as count,\n\n  sum(`request_duration_ms.Sum`) as sum,\n\n  sum(`request_duration_ms.Max`) as max,\n\n  sum(`request_duration_ms.Min`) as min,\n\n  sum(`request_duration_ms.Sum`) / sum(`request_duration_ms.Count`) as\navg_latency\n\n  by bin(1m)",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "accountIds": [],
+                    "logGroupPrefix": [],
+                    "logClass": "STANDARD"
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "title": "Request Duration (Histogram)",
+                "view": "timeSeries"
+            }
+        },
+        {
+            "type": "log",
+            "x": 12,
+            "y": 12,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /memory_usage_mb/\n| stats avg(memory_usage_mb), max(memory_usage_mb), memory_usage_mb by bin(1m)",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "accountIds": [],
+                    "logGroupPrefix": [],
+                    "logClass": "STANDARD"
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "title": "Memory Usage (Gauge)",
+                "view": "timeSeries"
+            }
+        },
+        {
+            "type": "log",
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 6,
+            "properties": {
+                "title": "All Metrics Summary",
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /_aws/ or @message like /Metric/\n| display @timestamp, @message\n| limit 20",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "logClass": "STANDARD",
+                    "logGroupPrefix": [],
+                    "accountIds": []
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "view": "table"
+            }
+        },
+        {
+            "type": "log",
+            "x": 12,
+            "y": 18,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "HTTP Server Active Requests",
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /http.server.active_requests/\n| stats avg(http.server.active_requests) by bin(1m)",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "logClass": "STANDARD",
+                    "logGroupPrefix": [],
+                    "accountIds": []
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "view": "timeSeries"
+            }
+        },
+        {
+            "type": "log",
+            "x": 0,
+            "y": 18,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "query": "SOURCE \"/aws/ecs/application/metrics\" |\nfields @timestamp, @message\n| filter @message like /http.server.request.duration/\n| stats\n  sum(`http.server.request.duration.Count`) as count, \n  sum(`http.server.request.duration.Sum`) as sum, \n  sum(`http.server.request.duration.Max`) as max, \n  sum(`http.server.request.duration.Min`) as min, \n  sum(`http.server.request.duration.Sum`) / sum(`http.server.request.duration.Count`) as avg_latency\n  by bin(1m)",
+                "queryBy": "logGroupName",
+                "logGroupPrefixes": {
+                    "accountIds": [],
+                    "logGroupPrefix": [],
+                    "logClass": "STANDARD"
+                },
+                "region": "ap-south-1",
+                "stacked": false,
+                "title": "HTTP Server Request Duration",
+                "view": "timeSeries"
+            }
+        }
+    ]
+}

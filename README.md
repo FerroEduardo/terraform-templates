@@ -10,3 +10,4 @@ Collection of Terraform projects for learning AWS infrastructure patterns, from 
 0. [ECS with Nginx and load balancer](/ecs-nginx-lb/)
 0. [ECS with Nginx, load balancer and auto scaling](/ecs-auto-scaling/)
 0. [ECS with ECR](/ecs-ecr/)
+0. [ECS with tracing and metrics using AWS OTel Collector](/ecs-metrics-tracing-agent/)
