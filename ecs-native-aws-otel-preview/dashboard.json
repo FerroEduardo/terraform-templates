@@ -1,0 +1,105 @@
+{
+    "widgets": [
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "Request Count (Counter)",
+                "metrics": [
+                    ["my-service", "request_count", { "stat": "Sum", "period": 60, "label": "Requests/min" }]
+                ],
+                "region": "us-east-1",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 0,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "Active Connections (UpDownCounter)",
+                "metrics": [
+                    ["my-service", "active_connections", { "stat": "Average", "period": 60, "label": "Avg Connections" }]
+                ],
+                "region": "us-east-1",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "Request Duration (Histogram)",
+                "metrics": [
+                    ["my-service", "request_duration_ms", { "stat": "p50", "period": 60, "label": "p50" }],
+                    ["my-service", "request_duration_ms", { "stat": "p90", "period": 60, "label": "p90" }],
+                    ["my-service", "request_duration_ms", { "stat": "p99", "period": 60, "label": "p99" }]
+                ],
+                "region": "us-east-1",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 6,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "Memory Usage (Gauge)",
+                "metrics": [
+                    ["my-service", "memory_usage_mb", { "stat": "Average", "period": 60, "label": "Avg MB" }],
+                    ["my-service", "memory_usage_mb", { "stat": "Maximum", "period": 60, "label": "Max MB" }]
+                ],
+                "region": "us-east-1",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "HTTP Server Request Duration",
+                "metrics": [
+                    ["my-service", "http.server.request.duration", { "stat": "p50", "period": 60, "label": "p50" }],
+                    ["my-service", "http.server.request.duration", { "stat": "p90", "period": 60, "label": "p90" }],
+                    ["my-service", "http.server.request.duration", { "stat": "p99", "period": 60, "label": "p99" }]
+                ],
+                "region": "us-east-1",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 12,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "HTTP Server Active Requests",
+                "metrics": [
+                    ["my-service", "http.server.active_requests", { "stat": "Average", "period": 60, "label": "Avg Active Requests" }]
+                ],
+                "region": "us-east-1",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        }
+    ]
+}

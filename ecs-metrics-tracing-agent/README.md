@@ -126,9 +126,9 @@ Two IAM roles are configured:
 
 4. Get the public IP of the running task
     ```shell
-    aws ecs list-tasks --cluster app-cluster --query 'taskArns[0]' --output text | \
-    xargs aws ecs describe-tasks --cluster app-cluster --tasks --query 'tasks[0].attachments[0].details[?name==`networkInterfaceId`].value' --output text | \
-    xargs aws ec2 describe-network-interfaces --network-interface-ids --query 'NetworkInterfaces[0].Association.PublicIp' --output text
+    aws ecs list-tasks --cluster app-cluster --region ap-south-1 --query 'taskArns[0]' --output text | \
+    xargs aws ecs describe-tasks --cluster app-cluster --region ap-south-1 --tasks --query 'tasks[0].attachments[0].details[?name==`networkInterfaceId`].value' --output text | \
+    xargs aws ec2 describe-network-interfaces --region ap-south-1 --network-interface-ids --query 'NetworkInterfaces[0].Association.PublicIp' --output text
     ```
 
 ### Generate Metrics and Traces
